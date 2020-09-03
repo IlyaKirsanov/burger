@@ -49,24 +49,26 @@ class BurgerBuilder extends React.Component {
 
 	purchaseContinueHandlerse = () => {
 		//alert('You are continue!')
-		this.setState({ loading: true })
-		const order = {
-			ingredients: this.state.ingredients,
-			price: this.state.totalPrice,
-			customer: {
-				name: 'Ilya',
-				adress: {
-					street: 'Teststreet',
-					zipCode: '123456',
-					country: 'Ukraine'
-				},
-				email: 'test@test.com'
-			},
-			deliveryMethod: 'fastest'
-		}
-		axios.post('/orders.json', order)
-			.then(response => this.setState({ loading: false, purchasing: false }))
-			.catch(error => this.setState({ loading: false }))
+		// this.setState({ loading: true })
+		// const order = {
+		// 	ingredients: this.state.ingredients,
+		// 	price: this.state.totalPrice,
+		// 	customer: {
+		// 		name: 'Ilya',
+		// 		adress: {
+		// 			street: 'Teststreet',
+		// 			zipCode: '123456',
+		// 			country: 'Ukraine'
+		// 		},
+		// 		email: 'test@test.com'
+		// 	},
+		// 	deliveryMethod: 'fastest'
+		// }
+		// axios.post('/orders.json', order)
+		// 	.then(response => this.setState({ loading: false, purchasing: false }))
+		// 	.catch(error => this.setState({ loading: false }))
+
+		this.props.history.push('/checkout')
 	}
 
 	updatePurchaseState(ingredients) {
@@ -163,9 +165,6 @@ class BurgerBuilder extends React.Component {
 		if (this.state.loading) {
 			orderSummary = <Spinner />
 		}
-
-
-
 
 		return (
 			<Aux>
