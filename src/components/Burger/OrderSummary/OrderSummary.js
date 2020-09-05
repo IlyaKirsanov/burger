@@ -1,5 +1,5 @@
 import React from 'react';
-import Aux from '../../../hoc/Aux/Aux'
+import ReactAux from '../../../hoc/ReactAux/ReactAux'
 import Button from '../../UI/Button/Button'
 
 class OrderSummary extends React.PureComponent {
@@ -15,7 +15,7 @@ class OrderSummary extends React.PureComponent {
 			})
 
 		return (
-			<Aux>
+			<ReactAux>
 				<h3>Your order</h3>
 				<p>Delicios burger with the following ingredients</p>
 				<ul>
@@ -25,7 +25,7 @@ class OrderSummary extends React.PureComponent {
 				<p>Continue checkout</p>
 				<Button btnType="Danger" clicked={this.props.purchaseCancelled}>CANCEL</Button>
 				<Button btnType="Success" clicked={this.props.purchaseContinued}>CONTINUE</Button>
-			</Aux>
+			</ReactAux>
 		)
 	}
 
