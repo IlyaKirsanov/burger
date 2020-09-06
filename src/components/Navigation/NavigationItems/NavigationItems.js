@@ -7,13 +7,13 @@ const NavigationItems = (props) => {
 		<ul className={classes.NavigationItems}>
 			
 			<NavigationItem
-				link="/" active={true}>
+				link="/" exact >
 				Buirger Builder
 			</NavigationItem>
 
 			<NavigationItem
-				link="/" active={false}>
-				Checkout
+				link="/orders">
+				Orders
 			</NavigationItem>
 
 		</ul>
