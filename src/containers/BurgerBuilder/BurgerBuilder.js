@@ -20,7 +20,7 @@ class BurgerBuilder extends React.Component {
 	}
 
 	componentDidMount() {
-	
+		this.props.onInitIngredients()
 	}
 
 	purchaseHandler = () => {
@@ -60,7 +60,7 @@ class BurgerBuilder extends React.Component {
 
 		let orderSummary = null;
 
-		let burger = this.state.error ? <p style={{ fontSize: '24px', color: 'red' }}>Ingredients can`t be loaded</p> : <Spinner />
+		let burger = this.props.error ? <p style={{ fontSize: '24px', color: 'red' }}>Ingredients can`t be loaded</p> : <Spinner />
 
 		if (this.props.ings) {
 			burger = (
@@ -98,7 +98,8 @@ class BurgerBuilder extends React.Component {
 const mapStateToProps = state => {
 	return {
 		ings: state.ingredients,
-		price: state.totalPrice
+		price: state.totalPrice,
+		error: state.error
 	}
 }
 
@@ -109,7 +110,8 @@ const mapDispatchToProps = dispatch => {
 		},
 		onIngredientRemoved: (ingName) => {
 			dispatch(burgerBuilderActions.removeIngredient(ingName))
-		}
+		},
+		onInitIngredients: () => dispatch(burgerBuilderActions.initIngredients())
 	}
 }
 
