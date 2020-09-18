@@ -107,9 +107,10 @@ class ContactData extends React.Component {
 		const order = {
 			ingredients: this.props.ings,
 			price: price.toFixed(2),
-			orderData: formData
+			orderData: formData,
+			userId: this.props.userId
 		}
-		this.props.onOrderBurger(this.props.token, order)
+		this.props.onOrderBurger(order, this.props.token);
 	}
 
 	checkValidation(value, rules) {
@@ -206,13 +207,14 @@ const mapStateToProps = state => {
 		ings: state.burgerBuilder.ingredients,
 		price: state.burgerBuilder.totalPrice,
 		loading: state.order.loading,
-		token: state.auth.token
+		token: state.auth.token,
+		userId: state.auth.userId
 	}
 }
 
 const mapDispatchToProps = dispatch => {
 	return {
-		onOrderBurger: (token,orderData) => dispatch(actions.purchaseBurger(token, orderData))
+		onOrderBurger: (orderData, token) => dispatch(actions.purchaseBurger(orderData, token))
 	}
 }
 
