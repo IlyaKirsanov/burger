@@ -8,18 +8,17 @@ import * as actions from './store/actions/index'
 import asyncComponent from './hoc/asyncComponent/asyncomponent'
 
 
-const asyncCheckout = asyncComponent( () => {
-  return import('./containers/Checkout/Checkout')
+const asyncCheckout = asyncComponent(() => {
+  return import('./containers/Checkout/Checkout');
 });
 
 const asyncOrders = asyncComponent(() => {
-  return import('./containers/Checkout/Checkout')
-})
+  return import('./containers/Orders/Orders');
+});
 
 const asyncAuth = asyncComponent(() => {
-  return import('./containers/Checkout/Checkout')
-})
-
+  return import('./containers/Auth/Auth');
+});
 class App extends React.Component {
 
   componentDidMount() {
@@ -30,7 +29,7 @@ class App extends React.Component {
 
     let routes = (
       <Switch>
-        <Route path="/auth" component={actions} />
+        <Route path="/auth" component={asyncAuth} />
         <Route path="/" exact component={BurgerBuilder} />
         <Redirect to="/"/>
       </Switch>
@@ -43,6 +42,7 @@ class App extends React.Component {
           <Route path="/checkout" component={asyncCheckout} />
           <Route path="/orders" component={asyncOrders} />
           <Route path="/logout" component={Logout} />
+          <Route path="/auth" component={asyncAuth} />
           <Route path="/" exact component={BurgerBuilder} />
           <Redirect to="/" />
         </Switch>
