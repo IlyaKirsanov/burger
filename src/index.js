@@ -11,7 +11,7 @@ import orderReducer from './store/reducers/order'
 import thunk from 'redux-thunk'
 import authReducer from './store/reducers/auth';
 import createSagaMiddleware from 'redux-saga'
-import { watchAuth, watchBurgerBuilder } from './store/sagas'
+import { watchAuth, watchBurgerBuilder, watchOrder } from './store/sagas'
 
 
 const rootReducer = combineReducers({
@@ -28,6 +28,7 @@ const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk, s
 
 sagaMiddleWare.run(watchAuth)
 sagaMiddleWare.run(watchBurgerBuilder)
+sagaMiddleWare.run(watchOrder)
 
 const app = (
   <Provider store={store}>
